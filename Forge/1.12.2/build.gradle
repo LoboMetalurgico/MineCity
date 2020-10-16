@@ -34,8 +34,8 @@ minecraft {
     version = "1.12.2-14.23.5.2847"
     runDir = "run"
 
-    //clientJvmArgs += "-Dfml.coreMods.load=br.com.gamemods.minecity.forge.mc_1_12_2.core.MineCityColorCoreMod"
-    //serverJvmArgs += "-Dfml.coreMods.load=br.com.gamemods.minecity.forge.mc_1_12_2.core.MineCityColorCoreMod"
+    clientJvmArgs += "-Dfml.coreMods.load=br.com.gamemods.minecity.forge.mc_1_12_2.core.MineCityColorCoreMod"
+    serverJvmArgs += "-Dfml.coreMods.load=br.com.gamemods.minecity.forge.mc_1_12_2.core.MineCityColorCoreMod"
 
     // the mappings can be changed at any time, and must be in the following format.
     // snapshot_YYYYMMDD   snapshot are built nightly.
@@ -58,7 +58,7 @@ repositories {
 
 dependencies {
     shade project(':Core')
-    shade project(':Forge:Base')
+    //shade project(':Forge:Base')
     compile "mysql:mysql-connector-java:6.0.3"
     compile "li.cil.oc:OpenComputers:MC1.12.2-1.7.+:api"
     compile "net.industrial-craft:industrialcraft-2:2.8.+:dev"
