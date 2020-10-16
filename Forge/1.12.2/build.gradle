@@ -34,8 +34,8 @@ minecraft {
     version = "1.12.2-14.23.5.2847"
     runDir = "run"
 
-    clientJvmArgs += "-Dfml.coreMods.load=br.com.gamemods.minecity.forge.mc_1_12_2.core.MineCityColorCoreMod"
-    serverJvmArgs += "-Dfml.coreMods.load=br.com.gamemods.minecity.forge.mc_1_12_2.core.MineCityColorCoreMod"
+    //clientJvmArgs += "-Dfml.coreMods.load=br.com.gamemods.minecity.forge.mc_1_12_2.core.MineCityColorCoreMod"
+    //serverJvmArgs += "-Dfml.coreMods.load=br.com.gamemods.minecity.forge.mc_1_12_2.core.MineCityColorCoreMod"
 
     // the mappings can be changed at any time, and must be in the following format.
     // snapshot_YYYYMMDD   snapshot are built nightly.
