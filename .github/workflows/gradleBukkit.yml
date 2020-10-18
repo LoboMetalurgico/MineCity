@@ -1,0 +1,32 @@
+# This workflow will build a Java project with Gradle
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
+
+name: Bukkit 1.10.2
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+      - name: Build with Gradle
+        run: ./gradlew Bukkit:build
+      - name: Rename artifacts
+        run: mv Bukkit/build/libs/MineCity-Bukkit-MC-1.10.2-*.jar Bukkit/build/libs/MineCity-Bukkit-MC-1.10.2.jar
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v2
+        if: success()
+        with:
+          name: MineCityBukkit
+          path: Bukkit/build/libs/MineCity-Bukkit-MC-1.10.2.jar

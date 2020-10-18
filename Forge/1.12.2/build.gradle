@@ -9,7 +9,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
     }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
@@ -20,26 +20,29 @@ plugins {
     id "net.minecraftforge.gradle.forge" version "2.0.2"
 }
 */
-project(':Forge:1.10.2') {
-    archivesBaseName = "MineCity-Forge-MC1.10.2"
+compileJava {
+    sourceCompatibility = targetCompatibility = '1.8'
+}
+project(':Forge:1.12.2') {
+    archivesBaseName = "MineCity-Forge-MC1.12.2"
 
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
 }
 
 minecraft {
-    version = "1.10.2-12.18.3.2185"
+    version = "1.12.2-14.23.5.2847"
     runDir = "run"
 
-    clientJvmArgs += "-Dfml.coreMods.load=br.com.gamemods.minecity.forge.mc_1_10_2.core.MineCityFrostCoreMod"
-    serverJvmArgs += "-Dfml.coreMods.load=br.com.gamemods.minecity.forge.mc_1_10_2.core.MineCityFrostCoreMod"
-    
+    clientJvmArgs += "-Dfml.coreMods.load=br.com.gamemods.minecity.forge.mc_1_12_2.core.MineCityColorCoreMod"
+    serverJvmArgs += "-Dfml.coreMods.load=br.com.gamemods.minecity.forge.mc_1_12_2.core.MineCityColorCoreMod"
+
     // the mappings can be changed at any time, and must be in the following format.
     // snapshot_YYYYMMDD   snapshot are built nightly.
     // stable_#            stables are built at the discretion of the MCP team.
     // Use non-default mappings at your own risk. they may not allways work.
     // simply re-run your setup task after changing the mappings to update your workspace.
-    mappings = "snapshot_20161111"
+    mappings = "snapshot_20171003"
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 }
 
@@ -57,8 +60,8 @@ dependencies {
     shade project(':Core')
     shade project(':Forge:Base')
     compile "mysql:mysql-connector-java:6.0.3"
-    compile "li.cil.oc:OpenComputers:MC1.10.2-1.7.+:api"
-    compile "net.industrial-craft:industrialcraft-2:2.6.+:dev"
+    compile "li.cil.oc:OpenComputers:MC1.12.2-1.7.+:api"
+    compile "net.industrial-craft:industrialcraft-2:2.8.+:dev"
     testCompile fileTree(dir: "run/mods", include: ["*.jar"], exclude:["*Assets*"])
     testCompile fileTree(dir: "run/mods/1.7.10", include: ["*.jar"])
 }
@@ -66,7 +69,7 @@ dependencies {
 jar {
     manifest {
         attributes (
-                'FMLCorePlugin': 'br.com.gamemods.minecity.forge.mc_1_10_2.core.MineCityFrostCoreMod',
+                'FMLCorePlugin': 'br.com.gamemods.minecity.forge.mc_1_12_2.core.MineCityColorCoreMod',
                 'FMLCorePluginContainsFMLMod': 'true',
                 'FMLAT': 'minecity_at.cfg'
         )
@@ -80,21 +83,21 @@ jar {
 }
 
 processResources
-{
-    // this will ensure that this task is redone when the versions change.
-    inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraft.version
+        {
+            // this will ensure that this task is redone when the versions change.
+            inputs.property "version", project.version
+            inputs.property "mcversion", project.minecraft.version
 
-    // replace stuff in mcmod.info, nothing else
-    from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
-                
-        // replace version and mcversion
-        expand 'version':project.version, 'mcversion':project.minecraft.version
-    }
-        
-    // copy everything else, thats not the mcmod.info
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
-    }
-}
+            // replace stuff in mcmod.info, nothing else
+            from(sourceSets.main.resources.srcDirs) {
+                include 'mcmod.info'
+
+                // replace version and mcversion
+                expand 'version':project.version, 'mcversion':project.minecraft.version
+            }
+
+            // copy everything else, thats not the mcmod.info
+            from(sourceSets.main.resources.srcDirs) {
+                exclude 'mcmod.info'
+            }
+        }

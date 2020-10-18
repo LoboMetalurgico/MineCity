@@ -28,7 +28,7 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MathHelper;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
-import org.mcstats.Metrics;
+//import org.mcstats.Metrics; TODO: Reactivate MCStats metrics
 import org.xml.sax.SAXException;
 
 import java.io.IOException;
@@ -103,7 +103,8 @@ public class MineCitySevenMod
     @Mod.EventHandler
     public void onPostInit(FMLPostInitializationEvent event)
     {
-        try
+        // TODO: Reactivate MCStats metrics
+        /* try
         {
             Metrics metrics = new Metrics("MineCity", "forge-1.0-SNAPSHOT");
             metrics.start();
@@ -112,6 +113,8 @@ public class MineCitySevenMod
         {
             forge.logger.warn("MCStats metrics failed to start", e);
         }
+        */
+        forge.logger.warn("MCStats metrics temporarily disabled.");
     }
 
     @Mod.EventHandler

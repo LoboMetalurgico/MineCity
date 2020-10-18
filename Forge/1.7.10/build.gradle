@@ -25,9 +25,9 @@ project(':Forge:1.7.10') {
 }
 
 minecraft {
-    version = "1.7.10-10.13.4.1566-1.7.10"
+    version = "1.7.10-10.13.4.1558-1.7.10"
     runDir = "run"
-    srgExtra "PK: org/mcstats br/com/gamemods/minecity/forge/mcstats"
+    // srgExtra "PK: org/mcstats br/com/gamemods/minecity/forge/mcstats" TODO: Reactivate MCStats metrics
 }
 
 configurations {
@@ -43,9 +43,9 @@ repositories {
 dependencies {
     shade project(':Core')
     shade project(':Forge:Base')
-    shade "org.mcstats.forge:metrics:R8-SNAPSHOT"
+    // shade "org.mcstats.forge:metrics:R8-SNAPSHOT" TODO: Get another nexus for this dependence
     compile "mysql:mysql-connector-java:5.1.32"
-    compile "li.cil.oc:OpenComputers:MC1.7.10-1.6.+:api"
+    compile "li.cil.oc:OpenComputers:MC1.7.10-1.7.+:api"
     compile "net.industrial-craft:industrialcraft-2:2.2.825-experimental:dev"
     testCompile fileTree(dir: "run/mods", include: ["*.jar"], exclude:["*Assets*"])
     testCompile fileTree(dir: "run/mods/1.7.10", include: ["*.jar"])

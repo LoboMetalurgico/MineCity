@@ -31,7 +31,7 @@ import org.bukkit.plugin.SimplePluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.scheduler.BukkitTask;
-import org.mcstats.Metrics;
+// import org.mcstats.Metrics; TODO: Reactivate MCStats metrics
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -63,7 +63,8 @@ public class MineCityPlugin extends JavaPlugin
     @Override
     public void onEnable()
     {
-        try
+        // TODO: Reactivate MCStats metrics
+        /* try
         {
             Metrics metrics = new Metrics(this);
             metrics.start();
@@ -71,7 +72,9 @@ public class MineCityPlugin extends JavaPlugin
         catch(Throwable e)
         {
             getLogger().log(Level.WARNING, "MCStats metrics failed to start", e);
-        }
+        } */
+
+        getLogger().log(Level.WARNING, "MCStats metrics temporarily disabled.");
 
         PermissionLayer.register("bukkit", BukkitPermission.PROVIDER);
 
