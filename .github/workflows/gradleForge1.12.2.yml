@@ -21,7 +21,7 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Setup workspace
-          run: ./gradlew Forge:1.12.2:setupDecompWorkspace  --info
+          run: ./gradlew Forge:1.12.2:setupDecompWorkspace --info
       - name: Build with Gradle
           run: ./gradlew Forge:1.12.2:build --info
       - name: Rename artifacts
